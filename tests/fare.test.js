@@ -56,3 +56,17 @@ test("peak hours add a 100-cent surcharge", () => {
 test("students pay half of the peak surcharge too", () => {
   expect(fareCents(3, "student", true)).toBe(150);
 });
+test.each([
+  [0, "adult", 200],
+  [5, "adult", 200],
+  [5.1, "adult", 250],
+  [6, "adult", 250],
+  [10, "student", 225],
+  [10, "senior", 225],
+  [100, "child", 0],
+  [4.9, "adult", 200],
+  [5.01, "student", 125],
+  [100, "senior", 2475]
+])("%p km, %s pays %p cents", (distanceKm, rider, expected) => {
+  expect(fareCents(distanceKm, rider)).toBe(expected); 
+});
