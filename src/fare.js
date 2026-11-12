@@ -34,9 +34,10 @@ function weeklyTotal(sum, days) {
     throw new Error("fare must be non-negative");
   }
   if (FARE_TOTAL >= WEEKLY_FARE_LIMIT) {
-    FARE_TOTAL = WEEKLY_FARE_LIMIT;
-  }
+    return WEEKLY_FARE_LIMIT;
+  } else {
   return FARE_TOTAL;
+  }
 }
 
 module.exports = { fareCents };
