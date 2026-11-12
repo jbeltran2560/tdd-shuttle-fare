@@ -76,3 +76,6 @@ test("An empty week costs 0", () => {
   const result = weeklyTotal(sum, days);
   expect(result).toBe(0);
 });
+test("A week under the cap costs the sum", () => {
+    expect(weeklyTotal(10,7)).toBe(70);
+});
