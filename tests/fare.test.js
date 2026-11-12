@@ -66,7 +66,7 @@ test.each([
   [100, "child", 0],
   [4.9, "adult", 200],
   [5.01, "student", 125],
-  [100, "senior", 2475]
+  [100, "senior", 9500]
 ])("%p km, %s pays %p cents", (distanceKm, rider, expected) => {
   expect(fareCents(distanceKm, rider)).toBe(expected); 
 });
