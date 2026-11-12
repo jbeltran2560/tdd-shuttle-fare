@@ -20,9 +20,10 @@ function fareCents(distanceKm, rider = "adult", peak = false) {
     throw new Error(`unknown rider type: ${rider}`);
   }
   const extraKm = Math.max(0, Math.ceil(distanceKm - INCLUDED_KM));
+  const PEAK_SURCHARGE_CENTS = 100;
   let full = BASE_FARE_CENTS + extraKm * PER_EXTRA_KM_CENTS;
   if (peak) {
-      full += 100;
+      full += PEAK_SURCHARGE_CENTS;
   }
   return Math.round(full * DISCOUNTS[rider]);
 }
