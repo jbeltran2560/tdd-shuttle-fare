@@ -1,4 +1,5 @@
 const BASE_FARE_CENTS = 200;
+const WEEKLY_FARE_LIMIT = 1500;
 const INCLUDED_KM = 5;
 const PER_EXTRA_KM_CENTS = 50;
 const DISCOUNTS = { adult: 1.0, student: 0.5, senior: 0.5, child: 0.0 };
@@ -23,9 +24,18 @@ function fareCents(distanceKm, rider = "adult", peak = false) {
   const PEAK_SURCHARGE_CENTS = 100;
   let full = BASE_FARE_CENTS + extraKm * PER_EXTRA_KM_CENTS;
   if (peak) {
-      full += PEAK_SURCHARGE_CENTS;
+    full += PEAK_SURCHARGE_CENTS;
   }
   return Math.round(full * DISCOUNTS[rider]);
+}
+function weeklyTotal(fares) {
+  if (fares < 0) {
+    throw new Error("fare must be non-negative");
+  }
+  if (fares >= WEEKLY_FARE_LIMIT) {
+    fares = WEEKLY_FARE_LIMIT;
+  }
+  return fares;
 }
 
 module.exports = { fareCents };
