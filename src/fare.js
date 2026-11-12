@@ -28,14 +28,16 @@ function fareCents(distanceKm, rider = "adult", peak = false) {
   }
   return Math.round(full * DISCOUNTS[rider]);
 }
-function weeklyTotal(fares) {
-  if (fares < 0) {
+function weeklyTotal(sum, days) {
+  const FARE_TOTAL = sum * days;
+  if (FARE_TOTAL < 0) {
     throw new Error("fare must be non-negative");
   }
-  if (fares >= WEEKLY_FARE_LIMIT) {
-    fares = WEEKLY_FARE_LIMIT;
+  if (FARE_TOTAL >= WEEKLY_FARE_LIMIT) {
+    FARE_TOTAL = WEEKLY_FARE_LIMIT;
   }
-  return fares;
+  return FARE_TOTAL;
 }
 
 module.exports = { fareCents };
+module.exports = { weeklyTotal };

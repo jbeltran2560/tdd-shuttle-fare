@@ -1,5 +1,5 @@
 const { fareCents } = require("../src/fare");
-
+const { weeklyTotal } = require("../src/fare");
 test("short trip: adult pays the base fare", () => {
   // Arrange
   const distanceKm = 3;
@@ -69,4 +69,10 @@ test.each([
   [100, "senior", 2475]
 ])("%p km, %s pays %p cents", (distanceKm, rider, expected) => {
   expect(fareCents(distanceKm, rider)).toBe(expected); 
+});
+test("An empty week costs 0", () => {
+  const sum = 0;
+  const days = 7;
+  const result = weeklyTotal(sum, days);
+  expect(result).toBe(0);
 });
