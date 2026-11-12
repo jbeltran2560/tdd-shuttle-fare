@@ -85,3 +85,6 @@ test("A week of exactly 1500 costs 1500", () => {
 test("A week over the cap costs 1500", () => {
     expect(weeklyTotal(215,7)).toBe(1500);
 });
+test("A negative fare in the list is an error", () => {
+    expect(() => weeklyTotal(-10, 7)).toThrow("fare must be non-negative");
+});
