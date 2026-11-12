@@ -47,3 +47,6 @@ test("A distance of −1 raises an error", () => {
 test("An unknown rider type such as \"pilot\" raises an error", () => {
   expect(() => fareCents(3, "pilot")).toThrow("unknown rider type");
 });
+test("part of a km is charged as a full km", () => {
+  expect(fareCents(5.5, "adult")).toBe(250);
+});
