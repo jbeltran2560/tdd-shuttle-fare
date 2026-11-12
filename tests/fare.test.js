@@ -82,3 +82,6 @@ test("A week under the cap costs the sum", () => {
 test("A week of exactly 1500 costs 1500", () => {
     expect(weeklyTotal(250,6)).toBe(1500);
 });
+test("A week over the cap costs 1500", () => {
+    expect(weeklyTotal(215,7)).toBe(1500);
+});
